@@ -14,47 +14,45 @@ public class ArticleDashBoard {
 
 	private final Set<String> userNames = new HashSet<>();
 
-	private final Set<String> replies = new HashSet<>();
+	private final Set<String> comments = new HashSet<>();
 
 	public Set<String> getUserNames() {
 		return this.userNames;
 	}
 
-	public Set<String> getReplies() {
-		return this.replies;
+	public Set<String> getComments() {
+		return this.comments;
 	}
 
 	/*
-		'articleComments' 라는 메서드 이름에서 'comments' 라는 것이
-		article 에 대한 comment 를 한다는 것인지,
-		article 에 대한 comment 를 읽어 온다는 것인지 의미적으로 모호하다.
-		이 경우에는 책에 나온대로 메서드가 하는 일을 주석으로 달아보면,
-		// 게시글 리뷰에 작성되어 있는 댓글 목록과 댓글을 읽어온다.
-		라고 표현할 수 있을 것 같다.
-		따라서, 'articleComments' 보다는 'load', 'get' 이런 것들이 의미적으로 맞다.
-
-		두 번째로 매개 변수를 생각해보면,
-		이 클래스의 역할은 0번 게시글의 댓글을 가져오는 것이라서,
-		굳이 매개 변수로 article 을 받을 필요가 없을 것이다.
-		따라서, 매개 변수를 아예 주지 않고, 이 메서드 자체에서 그 게시글로 부터 댓글을 읽어 올 수 있게 할 수 있다.
+		사실 게시글 reply 라는 표현보다는,
+		게시글에 달린 댓글이라는 표현이 더 적합할 것 같다.
+		그래서, replies -> comments 로 변경하는 것이 적합하다.
 	 */
-
 	/**
-	 * 게시글 리뷰 에 작성되어 있는 댓글 작성자 목록과 댓글을 읽어옵니다.
+	 * 게시글 reply 에 작성되어 있는 댓글 작성자 목록과 댓글을 읽어옵니다.
 	 */
 	private void loadComments() {
 		var article = ArticleFactory.getArticle(0);
-		var comments = article.getComments();
-		for (Comment comment : comments) {
+		for (Comment comment : article.getComments()) {
 			userNames.add(comment.userName());
-			replies.add((comment.content()));
+			comments.add((comment.content()));
 		}
 	}
 
 	public static void main(String[] args) {
 		var dashBoard = new ArticleDashBoard();
 		dashBoard.loadComments();
+		/*
+			lambda 식은 범위가 좁다.
+			그 내용이 어떤게 들어 있는지 대부분 아는 경우가 많다.
+			따라서 간추려서 쓰거나,
+			(name) -> System.out.println(name) -> (n) -> System.out.println(n)
+			좀 더 명시적으로 쓰거나,
+			메서드 레퍼런스로 변경하면 메서드 이름을 쓰지 않게 된다.
+			ex) System.out::println
+		 */
 		dashBoard.getUserNames().forEach(System.out::println);
-		dashBoard.getReplies().forEach(System.out::println);
+		dashBoard.getComments().forEach(System.out::println);
 	}
 }

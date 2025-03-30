@@ -40,7 +40,7 @@ public class ArticleDashBoard {
 	 */
 
 	/**
-	 * 게시글 리뷰 에 작성되어 있는 댓글 작성자 목록과 댓글을 읽어옵니다.
+	 * 게시글 Reply 에 작성되어 있는 댓글 작성자 목록과 댓글을 읽어옵니다.
 	 */
 	private void loadComments() {
 		var article = ArticleFactory.getArticle(0);
@@ -54,7 +54,7 @@ public class ArticleDashBoard {
 	public static void main(String[] args) {
 		var dashBoard = new ArticleDashBoard();
 		dashBoard.loadComments();
-		dashBoard.getUserNames().forEach(System.out::println);
-		dashBoard.getReplies().forEach(System.out::println);
+		dashBoard.getUserNames().forEach((name) -> System.out.println(name));
+		dashBoard.getReplies().forEach((reply) -> System.out.println(reply));
 	}
 }

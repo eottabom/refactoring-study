@@ -38,7 +38,7 @@ public class ArticleDashBoard {
 
 		var dashBoard = new ArticleDashBoard();
 		dashBoard.articleComments(article);
-		dashBoard.getUserNames().forEach(System.out::println);
-		dashBoard.getReplies().forEach(System.out::println);
+		dashBoard.getUserNames().forEach((name) -> System.out.println(name));
+		dashBoard.getReplies().forEach((reply) -> System.out.println(reply));
 	}
 }
