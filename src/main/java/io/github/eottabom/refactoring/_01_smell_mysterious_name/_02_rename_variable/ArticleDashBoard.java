@@ -14,29 +14,26 @@ public class ArticleDashBoard {
 
 	private final Set<String> userNames = new HashSet<>();
 
-	private final Set<String> comments = new HashSet<>();
+
+	private final Set<String> replies = new HashSet<>();
 
 	public Set<String> getUserNames() {
 		return this.userNames;
 	}
 
-	public Set<String> getComments() {
-		return this.comments;
+	public Set<String> getReplies() {
+		return this.replies;
 	}
 
-	/*
-		사실 게시글 reply 라는 표현보다는,
-		게시글에 달린 댓글이라는 표현이 더 적합할 것 같다.
-		그래서, replies -> comments 로 변경하는 것이 적합하다.
-	 */
 	/**
 	 * 게시글 reply 에 작성되어 있는 댓글 작성자 목록과 댓글을 읽어옵니다.
 	 */
 	private void loadComments() {
 		var article = ArticleFactory.getArticle(0);
-		for (Comment comment : article.getComments()) {
+		var comments = article.getComments();
+		for (Comment comment : comments) {
 			userNames.add(comment.userName());
-			comments.add((comment.content()));
+			replies.add((comment.content()));
 		}
 	}
 
@@ -53,6 +50,6 @@ public class ArticleDashBoard {
 			ex) System.out::println
 		 */
 		dashBoard.getUserNames().forEach(System.out::println);
-		dashBoard.getComments().forEach(System.out::println);
+		dashBoard.getReplies().forEach(System.out::println);
 	}
 }
