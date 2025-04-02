@@ -5,7 +5,7 @@ import java.util.Set;
 
 import io.github.eottabom.refactoring.Article;
 import io.github.eottabom.refactoring.Comment;
-import io.github.eottabom.refactoring._01_smell_mysterious_name.commons.ArticleFactory;
+import io.github.eottabom.refactoring._01_smell_mysterious_name.factory.ArticleFactory;
 
 /**
  * ArticleDashBoard 는 0번 게시글의 댓글들을 조회해서,

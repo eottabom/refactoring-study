@@ -1,4 +1,4 @@
-package io.github.eottabom.refactoring._01_smell_mysterious_name.commons;
+package io.github.eottabom.refactoring._01_smell_mysterious_name.factory;
 
 import java.util.HashMap;
 import java.util.Map;
