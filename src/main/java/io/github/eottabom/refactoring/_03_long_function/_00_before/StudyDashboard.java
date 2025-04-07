@@ -66,6 +66,10 @@ public class StudyDashboard {
 		}
 	}
 
+	/**
+	 * | 참여자 (420) | 1주차 | 2주차 | 3주차 | 참석율 |
+	 * | --- | --- | --- | --- | --- |
+	 */
 	private String header(int totalEvents, int totalNumberOfParticipants) {
 		StringBuilder header = new StringBuilder(String.format("| 참여자 (%d) |", totalNumberOfParticipants));
 		for (int index = 1; index <= totalEvents; index++) {
@@ -77,6 +81,9 @@ public class StudyDashboard {
 		return header.toString();
 	}
 
+	/**
+	 * |:white_check_mark:|:white_check_mark:|:white_check_mark:|:x:|
+	 */
 	private String checkMark(Participant p, int totalEvents) {
 		StringBuilder line = new StringBuilder();
 		for (int i = 1; i <= totalEvents; i++) {
