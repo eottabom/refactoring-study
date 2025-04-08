@@ -2,6 +2,7 @@ package io.github.eottabom.refactoring._02_duplicated_code._06_pull_up_method;
 
 public class ParticipantDashboard extends Dashboard {
 
+	// @formatter:off
 	/*
 		step3)
 		ReviewerDashboard 가 변경되었으니,
@@ -16,5 +17,6 @@ public class ParticipantDashboard extends Dashboard {
 //
 //		userNames.forEach(System.out::println);
 //	}
+	// @formatter:on
 
 }

@@ -11,7 +11,7 @@ public class ParticipantDashboard extends Dashboard {
 		var post = PostFactory.getPost(postId);
 
 		Set<String> participants = new HashSet<>();
-		post.comments().forEach(comment -> participants.add(comment.userName()));
+		post.comments().forEach((comment) -> participants.add(comment.userName()));
 
 		participants.forEach(System.out::println);
 	}

@@ -5,10 +5,15 @@ import java.util.List;
 import io.github.eottabom.refactoring.Comment;
 import io.github.eottabom.refactoring.Post;
 
-public class PostFactory {
+public final class PostFactory {
+
+	private PostFactory() {
+		throw new UnsupportedOperationException("Utility class");
+	}
 
 	public static Post getPost(int postId) {
 		return switch (postId) {
+			// @formatter:off
 			case 15 -> new Post(15, List.of(
 					new Comment("alice", "Thank you for the good writing.."),
 					new Comment("bob", "I learned a lot."),
@@ -19,6 +24,7 @@ public class PostFactory {
 					new Comment("erin", "Thank you."),
 					new Comment("logan", "That was a good review.")
 			));
+			// @formatter:on
 			default -> new Post(postId, List.of());
 		};
 	}

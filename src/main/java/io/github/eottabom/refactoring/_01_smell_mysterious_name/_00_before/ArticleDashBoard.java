@@ -8,8 +8,9 @@ import io.github.eottabom.refactoring.Comment;
 import io.github.eottabom.refactoring._01_smell_mysterious_name.factory.ArticleFactory;
 
 /**
- * ArticleDashBoard 는 0번 게시글의 댓글들을 조회해서,
- * 댓글 작성자 이름과 댓글 내용을 가져와서 출력하는 역할을 한다.
+ * ArticleDashBoard 는 0번 게시글의 댓글들을 조회해서, 댓글 작성자 이름과 댓글 내용을 가져와서 출력하는 역할을 한다.
+ *
+ * @author yukeun eottabom
  */
 public class ArticleDashBoard {
 
@@ -28,8 +29,8 @@ public class ArticleDashBoard {
 	private void articleComments(Article article) {
 		var comments = article.getComments();
 		for (Comment comment : comments) {
-			userNames.add(comment.userName());
-			replies.add((comment.content()));
+			this.userNames.add(comment.userName());
+			this.replies.add((comment.content()));
 		}
 	}
 
@@ -41,4 +42,5 @@ public class ArticleDashBoard {
 		dashBoard.getUserNames().forEach((name) -> System.out.println(name));
 		dashBoard.getReplies().forEach((reply) -> System.out.println(reply));
 	}
+
 }

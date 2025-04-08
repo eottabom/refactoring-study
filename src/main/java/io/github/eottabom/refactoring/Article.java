@@ -14,7 +14,7 @@ public class Article {
 	}
 
 	public void addComment(Comment comment) {
-		comments.add(comment);
+		this.comments.add(comment);
 	}
 
 	public List<Comment> getComments() {

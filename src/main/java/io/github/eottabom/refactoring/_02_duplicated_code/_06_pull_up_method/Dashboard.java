@@ -15,18 +15,21 @@ public class Dashboard {
 		participantDashboard.printUserNames(15);
 	}
 
+	// @formatter:off
 	/*
 		step4)
 		pull up method 를 통해서,
 		하위 클래스에 있는 printUserNames 메서드들을 상위 클래스인 Dashboard 로 올릴 수 있다.
 		(인텔리제에서는 refactor -> pull members up 이었음 / 문맥에 따라서 이름이 달라짐)
 	 */
+	// @formatter:on
 	public void printUserNames(int postId) {
 		var post = PostFactory.getPost(postId);
 
 		Set<String> userNames = new HashSet<>();
-		post.comments().forEach(comment -> userNames.add(comment.userName()));
+		post.comments().forEach((comment) -> userNames.add(comment.userName()));
 
 		userNames.forEach(System.out::println);
 	}
+
 }

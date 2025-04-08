@@ -6,8 +6,13 @@ import java.util.Map;
 import io.github.eottabom.refactoring.Comment;
 import io.github.eottabom.refactoring.Post;
 
-public class PostFactory {
+public final class PostFactory {
 
+	private PostFactory() {
+		throw new UnsupportedOperationException("Utility class");
+	}
+
+	// @formatter:off
 	private static final Map<Integer, Post> posts = Map.of(
 			1, new Post(1, List.of(
 					new Comment("alice", "좋은 강의 감사합니다!"),
@@ -21,10 +26,11 @@ public class PostFactory {
 					new Comment("bob", "3주차 끝!"),
 					new Comment("charlie", "3주차도 성공")
 			))
-			// ... 필요한 만큼 더 추가
 	);
-;
+	// @formatter:on
+
 	public static Post getPost(int index) {
 		return posts.getOrDefault(index, new Post(index, List.of()));
 	}
+
 }

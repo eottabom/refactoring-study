@@ -6,7 +6,10 @@ import java.util.Map;
 import io.github.eottabom.refactoring.Article;
 import io.github.eottabom.refactoring.Comment;
 
-public class ArticleFactory {
+public final class ArticleFactory {
+
+	private ArticleFactory() {
+	}
 
 	private static final Map<Integer, Article> ARTICLES = new HashMap<>();
 
@@ -22,4 +25,5 @@ public class ArticleFactory {
 	public static Article getArticle(int key) {
 		return ARTICLES.get(key);
 	}
+
 }

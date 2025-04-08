@@ -7,6 +7,7 @@ import io.github.eottabom.refactoring._02_duplicated_code.factory.PostFactory;
 
 public class PostDashBoard {
 
+	// @formatter:off
 	/*
 		어떠한 변수를 사용하기 바로 직전에 사용하는 분들이 있기도하고,
 		처음에 변수를 사용하는 분들이 있기도하다.
@@ -15,6 +16,7 @@ public class PostDashBoard {
 		문맥의 혼동이 있기 때문에 변수를 사용하기 전에 사용하는 것이 좋다.
 		-> 코드를 읽기도 쉽고, 코드 관리도 쉽고, 함수 추출하기도 쉬워진다.
 	 */
+	// @formatter:on
 	public void printParticipants(int postId) {
 		// Get post
 		// Set<String> participants = new HashSet<>();
@@ -22,7 +24,7 @@ public class PostDashBoard {
 
 		// Get participants
 		Set<String> participants = new HashSet<>();
-		post.comments().forEach(comment -> participants.add(comment.userName()));
+		post.comments().forEach((comment) -> participants.add(comment.userName()));
 
 		// Print participants
 		participants.forEach(System.out::println);
@@ -35,7 +37,7 @@ public class PostDashBoard {
 
 		// Get reviewers
 		Set<String> reviewers = new HashSet<>();
-		post.comments().forEach(comment -> reviewers.add(comment.userName()));
+		post.comments().forEach((comment) -> reviewers.add(comment.userName()));
 
 		// Print reviewers
 		reviewers.forEach(System.out::println);
@@ -46,4 +48,5 @@ public class PostDashBoard {
 		dashboard.printReviewers();
 		dashboard.printParticipants(15);
 	}
+
 }

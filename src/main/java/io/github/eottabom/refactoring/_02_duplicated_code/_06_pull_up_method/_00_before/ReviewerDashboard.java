@@ -11,8 +11,9 @@ public class ReviewerDashboard extends Dashboard {
 		var post = PostFactory.getPost(30);
 
 		Set<String> reviewers = new HashSet<>();
-		post.comments().forEach(comment -> reviewers.add(comment.userName()));
+		post.comments().forEach((comment) -> reviewers.add(comment.userName()));
 
 		reviewers.forEach(System.out::println);
 	}
+
 }

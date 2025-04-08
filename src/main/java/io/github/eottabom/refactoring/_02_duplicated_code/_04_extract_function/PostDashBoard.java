@@ -8,6 +8,7 @@ import io.github.eottabom.refactoring._02_duplicated_code.factory.PostFactory;
 
 public class PostDashBoard {
 
+	// @formatter:off
 	/*
 		"의도" 와 "구현" 관점에서 생각한다면,
 		이 코드는 "구현" 에 가깝다고 할 수 있을 것이다.
@@ -15,6 +16,7 @@ public class PostDashBoard {
 		함수를 추출하고 나서는 코드의 주석이 필요 없다.
 		printParticipants 와 printReviewers 도 리팩토링을 할 수 있을 것이다. (나중에 다룬다.)
 	 */
+	// @formatter:on
 	public void printParticipants(int postId) {
 		var post = getPost(postId);
 		Set<String> participants = getUserNames(post);
@@ -32,11 +34,11 @@ public class PostDashBoard {
 		return PostFactory.getPost(postId);
 	}
 
-	// 중복된 Get participants, reviewers -> userNames 을 가져오는 부분을 메서드로 추출 
+	// 중복된 Get participants, reviewers -> userNames 을 가져오는 부분을 메서드로 추출
 	private Set<String> getUserNames(Post post) {
 		// participants -> userNames 가 이 메서드 안에서는 더 맞는 표현이므로, 변경한다.
 		Set<String> userNames = new HashSet<>();
-		post.comments().forEach(comment -> userNames.add(comment.userName()));
+		post.comments().forEach((comment) -> userNames.add(comment.userName()));
 		return userNames;
 	}
 
@@ -50,4 +52,5 @@ public class PostDashBoard {
 		dashboard.printReviewers();
 		dashboard.printParticipants(15);
 	}
+
 }

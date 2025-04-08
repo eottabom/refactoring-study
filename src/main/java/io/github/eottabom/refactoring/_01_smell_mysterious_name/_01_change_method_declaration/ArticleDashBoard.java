@@ -7,8 +7,9 @@ import io.github.eottabom.refactoring.Comment;
 import io.github.eottabom.refactoring._01_smell_mysterious_name.factory.ArticleFactory;
 
 /**
- * ArticleDashBoard 는 0번 게시글의 댓글들을 조회해서,
- * 댓글 작성자 이름과 댓글 내용을 가져와서 출력하는 역할을 한다.
+ * ArticleDashBoard 는 0번 게시글의 댓글들을 조회해서, 댓글 작성자 이름과 댓글 내용을 가져와서 출력하는 역할을 한다.
+ *
+ * @author yukeun eottabom
  */
 public class ArticleDashBoard {
 
@@ -24,6 +25,7 @@ public class ArticleDashBoard {
 		return this.replies;
 	}
 
+	// @formatter:off
 	/*
 		'articleComments' 라는 메서드 이름에서 'comments' 라는 것이
 		article 에 대한 comment 를 한다는 것인지,
@@ -38,7 +40,7 @@ public class ArticleDashBoard {
 		굳이 매개 변수로 article 을 받을 필요가 없을 것이다.
 		따라서, 매개 변수를 아예 주지 않고, 이 메서드 자체에서 그 게시글로 부터 댓글을 읽어 올 수 있게 할 수 있다.
 	 */
-
+	// @formatter:on
 	/**
 	 * 게시글 Reply 에 작성되어 있는 댓글 작성자 목록과 댓글을 읽어옵니다.
 	 */
@@ -46,8 +48,8 @@ public class ArticleDashBoard {
 		var article = ArticleFactory.getArticle(0);
 		var comments = article.getComments();
 		for (Comment comment : comments) {
-			userNames.add(comment.userName());
-			replies.add((comment.content()));
+			this.userNames.add(comment.userName());
+			this.replies.add((comment.content()));
 		}
 	}
 
@@ -57,4 +59,5 @@ public class ArticleDashBoard {
 		dashBoard.getUserNames().forEach((name) -> System.out.println(name));
 		dashBoard.getReplies().forEach((reply) -> System.out.println(reply));
 	}
+
 }

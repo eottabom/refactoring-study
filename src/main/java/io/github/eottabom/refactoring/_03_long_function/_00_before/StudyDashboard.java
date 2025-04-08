@@ -12,8 +12,12 @@ import java.util.concurrent.Executors;
 import io.github.eottabom.refactoring.Comment;
 import io.github.eottabom.refactoring.Post;
 import io.github.eottabom.refactoring._02_duplicated_code.factory.PostFactory;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public class StudyDashboard {
+
+	private static final Logger logger = LoggerFactory.getLogger(StudyDashboard.class);
 
 	public static void main(String[] args) throws InterruptedException {
 		new StudyDashboard().print();
@@ -23,52 +27,57 @@ public class StudyDashboard {
 		List<Participant> participants = new CopyOnWriteArrayList<>();
 		int totalNumberOfEvents = 15;
 
-		ExecutorService service = Executors.newFixedThreadPool(4);
 		CountDownLatch latch = new CountDownLatch(totalNumberOfEvents);
 
-		for (int index = 1; index <= totalNumberOfEvents; index++) {
-			int eventId = index;
-			service.execute(() -> {
-				Post post = PostFactory.getPost(eventId);
+		try (ExecutorService service = Executors.newFixedThreadPool(4)) {
+			for (int index = 1; index <= totalNumberOfEvents; index++) {
+				int eventId = index;
+				service.execute(() -> {
 
-				for (Comment comment : post.comments()) {
-					String username = comment.userName();
-					Participant participant = participants.stream()
-							.filter(p -> p.username().equals(username))
-							.findFirst()
-							.orElseGet(() -> {
-								Participant newP = new Participant(username);
-								participants.add(newP);
-								return newP;
-							});
+					try {
+						Post post = PostFactory.getPost(eventId);
 
-					participant.setHomeworkDone(eventId);
-				}
+						for (Comment comment : post.comments()) {
+							String username = comment.userName();
+							Participant participant = participants.stream()
+								.filter((p) -> p.username().equals(username))
+								.findFirst()
+								.orElseGet(() -> {
+									Participant newP = new Participant(username);
+									participants.add(newP);
+									return newP;
+								});
 
-				latch.countDown();
-			});
+							participant.setHomeworkDone(eventId);
+						}
+					}
+					finally {
+						latch.countDown();
+					}
+				});
+			}
 		}
-
 		latch.await();
-		service.shutdown();
 
 		try (FileWriter fileWriter = new FileWriter("participants.md");
-			 PrintWriter writer = new PrintWriter(fileWriter)) {
+				PrintWriter writer = new PrintWriter(fileWriter)) {
 			participants.sort(Comparator.comparing(Participant::username));
 			writer.print(header(totalNumberOfEvents, participants.size()));
-			participants.forEach(p -> {
+			participants.forEach((p) -> {
 				double rate = p.getRate(totalNumberOfEvents);
-				String markdown = String.format("| %s %s | %.2f%% |\n", p.username(), checkMark(p, totalNumberOfEvents), rate);
+				String markdown = String.format("| %s %s | %.2f%% |\n", p.username(), checkMark(p, totalNumberOfEvents),
+						rate);
 				writer.print(markdown);
 			});
-		} catch (Exception e) {
-			e.printStackTrace();
+		}
+		catch (Exception ex) {
+			logger.error("An error occurred while writing the file: {}", ex.getMessage(), ex);
 		}
 	}
 
+	@SuppressWarnings("checkstyle:JavadocMethod")
 	/**
-	 * | 참여자 (420) | 1주차 | 2주차 | 3주차 | 참석율 |
-	 * | --- | --- | --- | --- | --- |
+	 * | 참여자 (420) | 1주차 | 2주차 | 3주차 | 참석율 | | --- | --- | --- | --- | --- |
 	 */
 	private String header(int totalEvents, int totalNumberOfParticipants) {
 		StringBuilder header = new StringBuilder(String.format("| 참여자 (%d) |", totalNumberOfParticipants));
@@ -81,6 +90,7 @@ public class StudyDashboard {
 		return header.toString();
 	}
 
+	@SuppressWarnings("checkstyle:JavadocMethod")
 	/**
 	 * |:white_check_mark:|:white_check_mark:|:white_check_mark:|:x:|
 	 */
@@ -91,4 +101,5 @@ public class StudyDashboard {
 		}
 		return line.toString();
 	}
+
 }
