@@ -1,8 +1,5 @@
 package io.github.eottabom.refactoring._03_long_function._10_replace_function_with_command;
 
-import java.io.FileWriter;
-import java.io.PrintWriter;
-import java.util.Comparator;
 import java.util.List;
 import java.util.concurrent.CopyOnWriteArrayList;
 import java.util.concurrent.CountDownLatch;
@@ -99,19 +96,16 @@ public class StudyDashboard {
 			이렇게 사용 가능해진다.
 		 */
 		// @formatter:on
-//		execute(participants);
+		// execute(participants);
 		new StudyPrinter(this.totalNumberOfEvents, participants).execute();
 	}
 
 	private Participant findParticipant(List<Participant> participants, String username) {
-		return participants.stream()
-				.filter((p) -> p.username().equals(username))
-				.findFirst()
-				.orElseGet(() -> {
-					Participant newP = new Participant(username);
-					participants.add(newP);
-					return newP;
-				});
+		return participants.stream().filter((p) -> p.username().equals(username)).findFirst().orElseGet(() -> {
+			Participant newP = new Participant(username);
+			participants.add(newP);
+			return newP;
+		});
 	}
 
 	// @formatter:off

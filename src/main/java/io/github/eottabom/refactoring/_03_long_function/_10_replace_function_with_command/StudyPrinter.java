@@ -17,6 +17,7 @@ public class StudyPrinter {
 
 	private static final Logger logger = LoggerFactory.getLogger(StudyPrinter.class);
 
+	// @formatter:off
 	/*
 		getMarkdownForParticipant, header 메서드를 가져오고 보니,
 		totalNumberOfEvents 변수가 필요한데,
@@ -25,6 +26,7 @@ public class StudyPrinter {
 		execute 이 메서드도 사실, List<Participant> participants 파라미터가 필요 없다.
 		-> 이것도 필드로 빼자~
 	 */
+	// @formatter:on
 
 	private final int totalNumberOfEvents;
 
@@ -37,7 +39,7 @@ public class StudyPrinter {
 
 	public void execute() {
 		try (FileWriter fileWriter = new FileWriter("participants.md");
-			 PrintWriter writer = new PrintWriter(fileWriter)) {
+				PrintWriter writer = new PrintWriter(fileWriter)) {
 			this.participants.sort(Comparator.comparing(Participant::username));
 			writer.print(header(this.participants.size()));
 			this.participants.forEach((p) -> {

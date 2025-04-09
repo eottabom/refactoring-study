@@ -20,3 +20,4 @@ public record Participant(String username, Map<Integer, Boolean> homework) {
 		this.homework.put(index, true);
 	}
 }
+;
