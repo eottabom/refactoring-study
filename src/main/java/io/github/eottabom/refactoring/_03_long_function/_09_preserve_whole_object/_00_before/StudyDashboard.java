@@ -82,7 +82,8 @@ public class StudyDashboard {
 	}
 
 	private String getMarkdownForParticipant(String username, Map<Integer, Boolean> homework) {
-		return String.format("| %s %s | %.2f%% |\n", username, checkMark(homework, this.totalNumberOfEvents), getRate(homework));
+		return String.format("| %s %s | %.2f%% |\n", username, checkMark(homework, this.totalNumberOfEvents),
+				getRate(homework));
 	}
 
 	private double getRate(Map<Integer, Boolean> homework) {

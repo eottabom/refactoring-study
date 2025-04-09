@@ -99,11 +99,14 @@ public class StudyDashboard {
 
 	// String username, Map<Integer, Boolean> homework 대신 participant
 	private String getMarkdownForParticipant(Participant participant) {
-		// return String.format("| %s %s | %.2f%% |\n", username, checkMark(homework, this.totalNumberOfEvents), getRate(homework));
+		// return String.format("| %s %s | %.2f%% |\n", username, checkMark(homework,
+		// this.totalNumberOfEvents), getRate(homework));
 		// checkMark 에서는 participant.homework() 를 넘길 수도 있지만, participant 를 넘겨도 된다.
 
-//		return String.format("| %s %s | %.2f%% |\n", participant.username(), checkMark(participant, this.totalNumberOfEvents), getRate(participant));
-		return String.format("| %s %s | %.2f%% |\n", participant.username(), checkMark(participant, this.totalNumberOfEvents), participant.getRate(this.totalNumberOfEvents));
+		// return String.format("| %s %s | %.2f%% |\n", participant.username(),
+		// checkMark(participant, this.totalNumberOfEvents), getRate(participant));
+		return String.format("| %s %s | %.2f%% |\n", participant.username(),
+				checkMark(participant, this.totalNumberOfEvents), participant.getRate(this.totalNumberOfEvents));
 	}
 
 	// Map<Integer, Boolean> homework 대신에 participant
@@ -116,12 +119,12 @@ public class StudyDashboard {
 		이 메서드를 Participant 로 넘겨버리고,
 		getMarkdownForParticipant 에서 코드를 수정 할 수도 있다.
 	 */
-	// @formatter:on
+
 //	private double getRate(Participant participant) {
 //		long count = participant.homework().values().stream().filter((value) -> value).count();
 //		return (double) (count * 100) / this.totalNumberOfEvents;
 //	}
-
+	// @formatter:on
 	@SuppressWarnings("checkstyle:JavadocMethod")
 	/**
 	 * | 참여자 (420) | 1주차 | 2주차 | 3주차 | 참석율 | | --- | --- | --- | --- | --- |
@@ -146,7 +149,9 @@ public class StudyDashboard {
 	private String checkMark(Participant participant, int totalNumberOfEvents) {
 		StringBuilder line = new StringBuilder();
 		for (int i = 1; i <= totalNumberOfEvents; i++) {
+			// @formatter:off
 //			line.append(homework.getOrDefault(i, false) ? "|:white_check_mark:" : "|:x:");
+			// @formatter:on
 			line.append(participant.homework().getOrDefault(i, false) ? "|:white_check_mark:" : "|:x:");
 		}
 		return line.toString();

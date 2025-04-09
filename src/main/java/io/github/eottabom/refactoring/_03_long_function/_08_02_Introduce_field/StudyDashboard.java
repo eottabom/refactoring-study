@@ -91,8 +91,7 @@ public class StudyDashboard {
 
 	// totalNumberOfEvents 매개변수 제거
 	private String getMarkdownForParticipant(Participant p) {
-		return String.format("| %s %s | %.2f%% |\n", p.username(), checkMark(p),
-				getRate(p));
+		return String.format("| %s %s | %.2f%% |\n", p.username(), checkMark(p), getRate(p));
 	}
 
 	// totalNumberOfEvents 매개변수 제거

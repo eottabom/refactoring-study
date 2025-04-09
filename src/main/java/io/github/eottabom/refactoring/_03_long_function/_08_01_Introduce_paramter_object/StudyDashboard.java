@@ -75,13 +75,12 @@ public class StudyDashboard {
 	}
 
 	/*
-		getMarkdownForParticipant, getRate 메서드를 보면,
-		int totalNumberOfEvents, Participant p 두 매개변수를 넘겨주고 있는데, 이것을 하나의 Object 로 변환할 수 있다.
+	 * getMarkdownForParticipant, getRate 메서드를 보면, int totalNumberOfEvents, Participant p
+	 * 두 매개변수를 넘겨주고 있는데, 이것을 하나의 Object 로 변환할 수 있다.
 	 */
 	private String getMarkdownForParticipant(ParticipantPrinter participantPrinter) {
-		return String.format("| %s %s | %.2f%% |\n", participantPrinter.p().username(), checkMark(participantPrinter
-						.p(), participantPrinter
-						.totalNumberOfEvents()),
+		return String.format("| %s %s | %.2f%% |\n", participantPrinter.p().username(),
+				checkMark(participantPrinter.p(), participantPrinter.totalNumberOfEvents()),
 				getRate(participantPrinter));
 	}
 

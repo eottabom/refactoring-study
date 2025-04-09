@@ -9,9 +9,9 @@ public record Participant(String username, Map<Integer, Boolean> homework) {
 		this(username, new HashMap<>());
 	}
 
-	public double getRate(double total) {
+	public double getRate(double totalNumberOfEvents) {
 		long count = this.homework.values().stream().filter((value) -> value).count();
-		return count * 100 / total;
+		return count * 100 / totalNumberOfEvents;
 	}
 
 	public void setHomeworkDone(int index) {

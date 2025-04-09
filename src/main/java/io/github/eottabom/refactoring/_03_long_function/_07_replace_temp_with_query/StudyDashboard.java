@@ -63,13 +63,13 @@ public class StudyDashboard {
 				PrintWriter writer = new PrintWriter(fileWriter)) {
 			participants.sort(Comparator.comparing(Participant::username));
 			writer.print(header(totalNumberOfEvents, participants.size()));
+			// @formatter:off
 			participants.forEach((p) -> {
 				// 참석율 계산
 				// STEP2
 //				long count = p.homework().values().stream().filter((value) -> value).count();
 //				double rate = (double) (count * 100) / totalNumberOfEvents;
 
-				// @formatter:off
 				/*
 					Step1) 메서드 분리
 					한 줄 짜리 markdown 을 만들어주는 부분인데,
@@ -92,7 +92,6 @@ public class StudyDashboard {
 //				String markdown = String.format("| %s %s | %.2f%% |\n", p.username(), checkMark(p, totalNumberOfEvents),
 //						rate);
 
-				// @formatter:on
 				/*
 					STEP2) 메서드 하나에 파라미터가 3개가 되면 조금 많다고 느껴지기 시작한다.
 					예제에서 그러면 rate 를 없앨 수 있는데,
@@ -116,11 +115,13 @@ public class StudyDashboard {
 					이게 임시 변수를 Query 라는 지칭하는 getRate 라는 함수로 빼냈을 때 얻을 수 있는 장점 파라미터를 줄일 수 있다는 장점이 있다.
 					파라미터들로 파악할 수 있는 정보라면, 파라미터를 줄일 수 있다.
 				 */
+
 //				String markdownForHomework = getMarkdownForParticipant(totalNumberOfEvents, p, rate);
 				String markdownForHomework = getMarkdownForParticipant(totalNumberOfEvents, p);
 
 				writer.print(markdownForHomework);
 			});
+			// @formatter:on
 		}
 		catch (Exception ex) {
 			logger.error("An error occurred while writing the file: {}", ex.getMessage(), ex);
@@ -129,8 +130,7 @@ public class StudyDashboard {
 
 	// STEP1) 메서드 추출하기
 	private String getMarkdownForParticipant(int totalNumberOfEvents, Participant p, double rate) {
-		return String.format("| %s %s | %.2f%% |\n", p.username(), checkMark(p, totalNumberOfEvents),
-				rate);
+		return String.format("| %s %s | %.2f%% |\n", p.username(), checkMark(p, totalNumberOfEvents), rate);
 	}
 
 	// STEP2) 매개변수 줄이기
