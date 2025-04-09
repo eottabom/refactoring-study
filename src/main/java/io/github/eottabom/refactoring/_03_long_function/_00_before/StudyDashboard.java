@@ -64,7 +64,10 @@ public class StudyDashboard {
 			participants.sort(Comparator.comparing(Participant::username));
 			writer.print(header(totalNumberOfEvents, participants.size()));
 			participants.forEach((p) -> {
-				double rate = p.getRate(totalNumberOfEvents);
+				// 참석율 계산
+				long count = p.homework().values().stream().filter((value) -> value).count();
+				double rate = (double) (count * 100) / totalNumberOfEvents;
+
 				String markdown = String.format("| %s %s | %.2f%% |\n", p.username(), checkMark(p, totalNumberOfEvents),
 						rate);
 				writer.print(markdown);
