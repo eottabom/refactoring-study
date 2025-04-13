@@ -1,4 +1,4 @@
-package io.github.eottabom.refactoring._03_long_function._10_replace_function_with_command;
+package io.github.eottabom.refactoring._03_long_function._12_split_loop;
 
 import java.io.FileWriter;
 import java.io.PrintWriter;
@@ -8,27 +8,9 @@ import java.util.List;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-// @formatter:off
-/*
-	Command 로 뽑아내다보니,
-	기존의 StudyDashboard 는 코드 양이 줄어들었고,
-	StudyPrinter 라는 클래스는, 보다 확장성이 늘어나게 된 구조로 변경 되었다.
- */
-// @formatter:on
 public class StudyPrinter {
 
 	private static final Logger logger = LoggerFactory.getLogger(StudyPrinter.class);
-
-	// @formatter:off
-	/*
-		getMarkdownForParticipant, header 메서드를 가져오고 보니,
-		totalNumberOfEvents 변수가 필요한데,
-		이를 필드로 만들어줘보자~
-
-		execute 이 메서드도 사실, List<Participant> participants 파라미터가 필요 없다.
-		-> 이것도 필드로 빼자~
-	 */
-	// @formatter:on
 
 	private final int totalNumberOfEvents;
 
