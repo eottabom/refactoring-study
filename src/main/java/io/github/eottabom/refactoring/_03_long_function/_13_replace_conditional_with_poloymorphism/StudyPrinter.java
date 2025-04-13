@@ -16,7 +16,12 @@ public class StudyPrinter {
 
 	private final List<Participant> participants;
 
-	private final PrinterMode printerMode;
+	private PrinterMode printerMode;
+
+	public StudyPrinter(int totalNumberOfEvents, List<Participant> participants) {
+		this.totalNumberOfEvents = totalNumberOfEvents;
+		this.participants = participants;
+	}
 
 	public StudyPrinter(int totalNumberOfEvents, List<Participant> participants, PrinterMode printerMode) {
 		this.totalNumberOfEvents = totalNumberOfEvents;
