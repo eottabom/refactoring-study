@@ -8,29 +8,33 @@ import java.util.List;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-public class StudyPrinter {
+public abstract class StudyPrinter {
 
 	private static final Logger logger = LoggerFactory.getLogger(StudyPrinter.class);
 
-	private final int totalNumberOfEvents;
+	// STEP2) 상위 클래스에서 사용하는 필드들을 private -> protected 로 변경한다.
+	protected final int totalNumberOfEvents;
 
-	private final List<Participant> participants;
-
-	private PrinterMode printerMode;
+	protected final List<Participant> participants;
 
 	public StudyPrinter(int totalNumberOfEvents, List<Participant> participants) {
 		this.totalNumberOfEvents = totalNumberOfEvents;
 		this.participants = participants;
-	}
-
-	public StudyPrinter(int totalNumberOfEvents, List<Participant> participants, PrinterMode printerMode) {
-		this.totalNumberOfEvents = totalNumberOfEvents;
-		this.participants = participants;
 		this.participants.sort(Comparator.comparing(Participant::username));
-		this.printerMode = printerMode;
 	}
 
-	public void execute() {
+	// @formatter:off
+	// STEP5) execute 는 abstract 로 변경해줄 수 있다 클래스도 abstract 가 되어야 한다.
+
+	public abstract void execute();
+
+	// public void execute() {
+		// printerMode 에 따라서 코드가 길어지는데,
+		// STEP1)) 이를 다형성을 이용해서 분리해본다.
+		// 각각의 Cvs, Console, Markdown Printer 를 만들게 되면,
+		// printerMode 는 없어도 된다.
+
+		/*
 		switch (printerMode) {
 			case CVS -> {
 				try (FileWriter fileWriter = new FileWriter("participants.cvs");
@@ -64,56 +68,17 @@ public class StudyPrinter {
 				}
 			}
 		}
-	}
+		*/
+	// }
 
-	private String getCvsForParticipant(Participant participant) {
-		StringBuilder line = new StringBuilder();
-		line.append(participant.username());
-		for (int i = 1 ; i <= this.totalNumberOfEvents ; i++) {
-			if(participant.homework().containsKey(i) && participant.homework().get(i)) {
-				line.append(",O");
-			} else {
-				line.append(",X");
-			}
-		}
-		line.append(",").append(participant.getRate(this.totalNumberOfEvents));
-		return line.toString();
-	}
+	// STEP3) 각 클래스에서 사용되어야 하는 메서드들도 각 클래스도 이동시킨다.
 
-	private String cvsHeader(int totalNumberOfParticipants) {
-		StringBuilder header = new StringBuilder(String.format("참여자 (%d),", totalNumberOfParticipants));
-		for (int index = 1; index <= this.totalNumberOfEvents; index++) {
-			header.append(String.format("%d주차,", index));
-		}
-		header.append("참석율");
-		return header.toString();
-	}
-
-	private String getMarkdownForParticipant(Participant participant) {
-		return String.format("| %s %s | %.2f%% |\n", participant.username(),
-				checkMark(participant, this.totalNumberOfEvents), participant.getRate(this.totalNumberOfEvents));
-	}
-
-	@SuppressWarnings("checkstyle:JavadocMethod")
-	/**
-	 * | 참여자 (420) | 1주차 | 2주차 | 3주차 | 참석율 | | --- | --- | --- | --- | --- |
-	 */
-	private String header(int totalNumberOfParticipants) {
-		StringBuilder header = new StringBuilder(String.format("| 참여자 (%d) |", totalNumberOfParticipants));
-		for (int index = 1; index <= this.totalNumberOfEvents; index++) {
-			header.append(String.format(" %d주차 |", index));
-		}
-		header.append(" 참석율 |\n");
-
-		header.append("| --- ".repeat(this.totalNumberOfEvents + 2)).append("|\n");
-		return header.toString();
-	}
-
+	// STEP4) checkMark 는 공통으로 사용하니깐, protected 로 변경해준다.
 	@SuppressWarnings("checkstyle:JavadocMethod")
 	/**
 	 * |:white_check_mark:|:white_check_mark:|:white_check_mark:|:x:|
 	 */
-	private String checkMark(Participant participant, int totalNumberOfEvents) {
+	protected String checkMark(Participant participant, int totalNumberOfEvents) {
 		StringBuilder line = new StringBuilder();
 		for (int i = 1; i <= totalNumberOfEvents; i++) {
 			line.append(participant.homework().getOrDefault(i, false) ? "|:white_check_mark:" : "|:x:");
@@ -121,4 +86,5 @@ public class StudyPrinter {
 		return line.toString();
 	}
 
+	// @formatter:on
 }

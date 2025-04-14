@@ -1,4 +1,4 @@
-package io.github.eottabom.refactoring._03_long_function._13_replace_conditional_with_poloymorphism;
+package io.github.eottabom.refactoring._03_long_function._13_replace_conditional_with_poloymorphism._00_before;
 
 import java.time.LocalDateTime;
 import java.util.Arrays;
@@ -33,12 +33,7 @@ public class StudyDashboard {
 	private void print() throws InterruptedException {
 		analyzeHomeworkSubmissions();
 
-		// STEP6 이제는 사용할 printer 를 사용하면된다.
-		// new StudyPrinter(this.totalNumberOfEvents, this.participants).execute();
-
-		// STEP7 각 타입에 따라서 쓰고 싶다 -> 팩토리로 하면 된다.
-		// 근데 어차피 타입을 받아서 동적으로 사용해야하는데, 그럴빠에는 이렇게 사용해도 상관은 없을 것이다.
-		new CvsPrinter(this.totalNumberOfEvents, this.participants).execute();
+		new StudyPrinter(this.totalNumberOfEvents, this.participants).execute();
 		printFirstParticipants();
 	}
 
