@@ -22,7 +22,6 @@ public class StudyDashboard {
 
 	public StudyDashboard(int totalNumberOfEvents) {
 		this.totalNumberOfEvents = totalNumberOfEvents;
-		// add
 		this.participants = new CopyOnWriteArrayList<>();
 		this.firstParticipantsForEachEvent = new Participant[this.totalNumberOfEvents];
 	}
@@ -49,7 +48,7 @@ public class StudyDashboard {
 					try {
 						Post post = PostFactory.getPost(eventId);
 						checkHomework(post, eventId);
-						firstParticipantsForEachEvent[eventId - 1] = findFirst(post);
+						this.firstParticipantsForEachEvent[eventId - 1] = findFirst(post);
 					}
 					finally {
 						latch.countDown();
@@ -86,30 +85,28 @@ public class StudyDashboard {
 	}
 
 	private void printFirstParticipants() {
-		Arrays.stream(this.firstParticipantsForEachEvent).forEach(p -> System.out.println(p.username()));
+		Arrays.stream(this.firstParticipantsForEachEvent).forEach((p) -> System.out.println(p.username()));
 	}
 
 	private Participant findParticipant(String username) {
-		return isNewParticipant(username) ?
-				createNewParticipant(username) :
-				findExistingParticipant(username);
+		return isNewParticipant(username) ? createNewParticipant(username) : findExistingParticipant(username);
 	}
 
 	private Participant findExistingParticipant(String username) {
 		Participant participant;
-		participant = participants.stream().filter((p) -> p.username().equals(username)).findFirst().orElseThrow();
+		participant = this.participants.stream().filter((p) -> p.username().equals(username)).findFirst().orElseThrow();
 		return participant;
 	}
 
 	private Participant createNewParticipant(String username) {
 		Participant participant;
 		participant = new Participant(username);
-		participants.add(participant);
+		this.participants.add(participant);
 		return participant;
 	}
 
 	private boolean isNewParticipant(String username) {
-		return participants.stream().noneMatch((p) -> p.username().equals(username));
+		return this.participants.stream().noneMatch((p) -> p.username().equals(username));
 	}
 
 }

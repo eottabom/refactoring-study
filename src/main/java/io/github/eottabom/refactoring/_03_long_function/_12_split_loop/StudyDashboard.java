@@ -20,7 +20,7 @@ public class StudyDashboard {
 
 	public StudyDashboard(int totalNumberOfEvents) {
 		this.totalNumberOfEvents = totalNumberOfEvents;
-		firstParticipantsForEachEvent = new Participant[this.totalNumberOfEvents];
+		this.firstParticipantsForEachEvent = new Participant[this.totalNumberOfEvents];
 	}
 
 	public static void main(String[] args) throws InterruptedException {
@@ -64,7 +64,7 @@ public class StudyDashboard {
 //						Participant first = null;
 						// @formatter:on
 						checkHomework(post, participants, eventId);
-						firstParticipantsForEachEvent[eventId - 1] = findFirst(post, participants);
+						this.firstParticipantsForEachEvent[eventId - 1] = findFirst(post, participants);
 
 					}
 					finally {
@@ -105,13 +105,12 @@ public class StudyDashboard {
 	}
 
 	private void printFirstParticipants() {
-		Arrays.stream(this.firstParticipantsForEachEvent).forEach(p -> System.out.println(p.username()));
+		Arrays.stream(this.firstParticipantsForEachEvent).forEach((p) -> System.out.println(p.username()));
 	}
 
 	private Participant findParticipant(List<Participant> participants, String username) {
-		return isNewParticipant(participants, username) ?
-				createNewParticipant(participants, username) :
-				findExistingParticipant(participants, username);
+		return isNewParticipant(participants, username) ? createNewParticipant(participants, username)
+				: findExistingParticipant(participants, username);
 	}
 
 	private Participant findExistingParticipant(List<Participant> participants, String username) {
