@@ -2,9 +2,9 @@ package io.github.eottabom.refactoring._04_long_parameter_list._00_before;
 
 public class Order {
 
-	private int quantity;
+	private final int quantity;
 
-	private double itemPrice;
+	private final double itemPrice;
 
 	public Order(int quantity, double itemPrice) {
 		this.quantity = quantity;
