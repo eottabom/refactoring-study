@@ -11,7 +11,7 @@
  * 이 메서드가 하는 일의 의미를 호출하는 입장에서는 Flag 를 보지 않으면 이해하기 힘들다.
  *
  * 이러한 리팩토링을 할 때는,
- * 조건문 분해하기 Decompose Condition 을 활용할 수 있다.
+ * 조건문 분해하기 Decompose Condition 을 활용 할 수 있다.
  * 이것도 사실 extract function 이라고 볼 수도 있다.
  *
  */
