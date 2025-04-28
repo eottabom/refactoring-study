@@ -1,6 +1,6 @@
 package io.github.eottabom.refactoring._06_mutable_date._20_remove_setting_method;
 
-import io.github.eottabom.refactoring._06_mutable_data._20.remove_setting_method.Person;
+import io.github.eottabom.refactoring._06_mutable_data._20_remove_setting_method.Person;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;

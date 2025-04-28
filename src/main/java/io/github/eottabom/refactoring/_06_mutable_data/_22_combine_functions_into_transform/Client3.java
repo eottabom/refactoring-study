@@ -1,4 +1,4 @@
-package io.github.eottabom.refactoring._06_mutable_data._22.combine_functions_into_transform;
+package io.github.eottabom.refactoring._06_mutable_data._22_combine_functions_into_transform;
 
 // @formatter:off
 public class Client3 extends UploadClient {

@@ -20,4 +20,4 @@
  * transform function 을 하거나 Combine Functions into class 을 해도 무방하다.
  * 
  */
-package io.github.eottabom.refactoring._06_mutable_data._22.combine_functions_into_transform;
+package io.github.eottabom.refactoring._06_mutable_data._22_combine_functions_into_transform;

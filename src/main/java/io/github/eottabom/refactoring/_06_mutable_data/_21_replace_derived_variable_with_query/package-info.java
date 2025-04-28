@@ -10,4 +10,4 @@
  *
  * 파생 값이 불변인 경우는 파생변수를 그대로 유지해도 된다.
  */
-package io.github.eottabom.refactoring._06_mutable_data._21.replace_derived_variable_with_query;
+package io.github.eottabom.refactoring._06_mutable_data._21_replace_derived_variable_with_query;

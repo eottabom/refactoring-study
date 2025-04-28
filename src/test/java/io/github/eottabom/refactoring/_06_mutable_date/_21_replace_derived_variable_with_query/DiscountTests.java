@@ -1,6 +1,6 @@
-package io.github.eottabom.refactoring._06_mutable_date._21.replace_derived_variable_with_query;
+package io.github.eottabom.refactoring._06_mutable_date._21_replace_derived_variable_with_query;
 
-import io.github.eottabom.refactoring._06_mutable_data._21.replace_derived_variable_with_query.Discount;
+import io.github.eottabom.refactoring._06_mutable_data._21_replace_derived_variable_with_query.Discount;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;

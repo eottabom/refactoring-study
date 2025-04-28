@@ -1,4 +1,4 @@
-package io.github.eottabom.refactoring._06_mutable_data._21.replace_derived_variable_with_query;
+package io.github.eottabom.refactoring._06_mutable_data._21_replace_derived_variable_with_query;
 
 import java.util.ArrayList;
 import java.util.List;

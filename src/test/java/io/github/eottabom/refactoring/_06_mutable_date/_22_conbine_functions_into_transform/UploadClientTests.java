@@ -3,10 +3,10 @@ package io.github.eottabom.refactoring._06_mutable_date._22_conbine_functions_in
 import java.time.Month;
 import java.time.Year;
 
-import io.github.eottabom.refactoring._06_mutable_data._22.combine_functions_into_transform.Client1;
-import io.github.eottabom.refactoring._06_mutable_data._22.combine_functions_into_transform.Client2;
-import io.github.eottabom.refactoring._06_mutable_data._22.combine_functions_into_transform.Client3;
-import io.github.eottabom.refactoring._06_mutable_data._22.combine_functions_into_transform.Upload;
+import io.github.eottabom.refactoring._06_mutable_data._22_combine_functions_into_transform.Client1;
+import io.github.eottabom.refactoring._06_mutable_data._22_combine_functions_into_transform.Client2;
+import io.github.eottabom.refactoring._06_mutable_data._22_combine_functions_into_transform.Client3;
+import io.github.eottabom.refactoring._06_mutable_data._22_combine_functions_into_transform.Upload;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;

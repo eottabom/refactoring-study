@@ -1,4 +1,4 @@
-package io.github.eottabom.refactoring._06_mutable_data._20.remove_setting_method;
+package io.github.eottabom.refactoring._06_mutable_data._20_remove_setting_method;
 
 public class Person {
 
