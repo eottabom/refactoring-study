@@ -10,14 +10,14 @@ class OrderTests {
 	void discountedPriceWithDiscountLevel2() {
 		int quantity = 200;
 		double price = 100;
-		assertThat(quantity * price * 0.90).isEqualTo(new Order(quantity, price).finalPrice());
+		assertThat(new Order(quantity, price).finalPrice()).isEqualTo(quantity * price * 0.90);
 	}
 
 	@Test
 	void discountedPriceWithDiscountLevel1() {
 		int quantity = 100;
 		double price = 100;
-		assertThat(quantity * price * 0.95).isEqualTo(new Order(quantity, price).finalPrice());
+		assertThat(new Order(quantity, price).finalPrice()).isEqualTo(quantity * price * 0.95);
 	}
 
 }
