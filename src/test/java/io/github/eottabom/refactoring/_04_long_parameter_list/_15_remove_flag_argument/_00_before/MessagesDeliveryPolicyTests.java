@@ -17,8 +17,8 @@ class MessagesDeliveryPolicyTests {
 		var policy = new MessagesDeliveryPolicy();
 		// 운좋게도 인텔리제이에서 파라미터 이름을 보여주긴하는데..
 		// 이런 도움이 없을때는 해당 메서드안에 들어가서 봐야한다.
-		assertThat(requestAt.plusDays(1)).isEqualTo(policy.deliveryDate(emailMessage, true));
-		assertThat(requestAt.plusDays(2)).isEqualTo(policy.deliveryDate(emailMessage, false));
+		assertThat(policy.deliveryDate(emailMessage, true)).isEqualTo(requestAt.plusDays(1));
+		assertThat(policy.deliveryDate(emailMessage, false)).isEqualTo(requestAt.plusDays(2));
 	}
 
 }

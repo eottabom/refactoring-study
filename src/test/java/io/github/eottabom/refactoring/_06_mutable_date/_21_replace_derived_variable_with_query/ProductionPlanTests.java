@@ -12,7 +12,7 @@ class ProductionPlanTests {
 		ProductionPlan productionPlan = new ProductionPlan();
 		productionPlan.applyAdjustment(10);
 		productionPlan.applyAdjustment(20);
-		assertThat(30).isEqualTo(productionPlan.getProduction());
+		assertThat(productionPlan.getProduction()).isEqualTo(30);
 	}
 
 }

@@ -10,8 +10,8 @@ class GameCharacterTests {
 	@Test
 	void moveDistance() {
 		GameCharacter gameCharacter = new GameCharacter(10d, 20d, 10, 5);
-		assertThat(75d).isEqualTo(gameCharacter.moveDistance(10));
-		assertThat(425d).isEqualTo(gameCharacter.moveDistance(20));
+		assertThat(gameCharacter.moveDistance(10)).isEqualTo(75d);
+		assertThat(gameCharacter.moveDistance(20)).isEqualTo(425d);
 	}
 
 }

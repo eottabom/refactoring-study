@@ -18,8 +18,8 @@ class MessagesDeliveryPolicyTests {
 		// 이런 도움이 없을때는 해당 메서드안에 들어가서 봐야한다.
 
 		// STEP2) 변경된 메서드로 변경한다. Flag 성 파라미터도 줄어들게 된다.
-		assertThat(requestAt.plusDays(1)).isEqualTo(policy.highPriorityDate(emailMessage));
-		assertThat(requestAt.plusDays(2)).isEqualTo(policy.regularPriorityDate(emailMessage));
+		assertThat(policy.highPriorityDate(emailMessage)).isEqualTo(requestAt.plusDays(1));
+		assertThat(policy.regularPriorityDate(emailMessage)).isEqualTo(requestAt.plusDays(2));
 	}
 
 }

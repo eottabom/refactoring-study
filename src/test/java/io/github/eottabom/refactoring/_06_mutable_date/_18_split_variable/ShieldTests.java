@@ -15,10 +15,13 @@ class ShieldTests {
 		assertThat(50d).isEqualTo(shield.getCoverage());
 		assertThat(30d).isEqualTo(shield.getDurability());
 
+		assertThat(shield.getCoverage()).isEqualTo(50d);
+		assertThat(shield.getDurability()).isEqualTo(30d);
+
 		shield.updateShield(5, 5);
 
-		assertThat(25d).isEqualTo(shield.getCoverage());
-		assertThat(20d).isEqualTo(shield.getDurability());
+		assertThat(shield.getCoverage()).isEqualTo(25d);
+		assertThat(shield.getDurability()).isEqualTo(20d);
 	}
 
 }
