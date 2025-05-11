@@ -1,10 +1,7 @@
-package io.github.eottabom.refactoring._11_primitive_obsession;
+package io.github.eottabom.refactoring._11_primitive_obsession._30_replace_primitive_with_object;
 
 import java.util.List;
 
-import io.github.eottabom.refactoring._11_primitive_obsession._30_replace_primitive_with_object.Level;
-import io.github.eottabom.refactoring._11_primitive_obsession._30_replace_primitive_with_object.Notice;
-import io.github.eottabom.refactoring._11_primitive_obsession._30_replace_primitive_with_object.NoticeManager;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
