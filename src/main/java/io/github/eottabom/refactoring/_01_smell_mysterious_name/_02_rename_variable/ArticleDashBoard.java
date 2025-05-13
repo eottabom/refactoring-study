@@ -3,7 +3,7 @@ package io.github.eottabom.refactoring._01_smell_mysterious_name._02_rename_vari
 import java.util.HashSet;
 import java.util.Set;
 
-import io.github.eottabom.refactoring.Comment;
+import io.github.eottabom.refactoring._01_smell_mysterious_name.Comment;
 import io.github.eottabom.refactoring._01_smell_mysterious_name.factory.ArticleFactory;
 
 /**

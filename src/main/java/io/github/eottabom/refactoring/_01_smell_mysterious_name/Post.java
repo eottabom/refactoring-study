@@ -1,4 +1,4 @@
-package io.github.eottabom.refactoring;
+package io.github.eottabom.refactoring._01_smell_mysterious_name;
 
 import java.util.List;
 

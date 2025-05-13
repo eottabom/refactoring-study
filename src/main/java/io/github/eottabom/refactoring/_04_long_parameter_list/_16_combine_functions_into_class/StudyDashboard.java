@@ -1,8 +1,5 @@
 package io.github.eottabom.refactoring._04_long_parameter_list._16_combine_functions_into_class;
 
-import java.io.FileWriter;
-import java.io.PrintWriter;
-import java.util.Comparator;
 import java.util.List;
 import java.util.Map;
 import java.util.concurrent.CopyOnWriteArrayList;
@@ -10,8 +7,8 @@ import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
-import io.github.eottabom.refactoring.Comment;
-import io.github.eottabom.refactoring.Post;
+import io.github.eottabom.refactoring._01_smell_mysterious_name.Comment;
+import io.github.eottabom.refactoring._01_smell_mysterious_name.Post;
 import io.github.eottabom.refactoring._02_duplicated_code.factory.PostFactory;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

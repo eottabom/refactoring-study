@@ -3,8 +3,8 @@ package io.github.eottabom.refactoring._03_long_function.factory;
 import java.util.List;
 import java.util.Map;
 
-import io.github.eottabom.refactoring.Comment;
-import io.github.eottabom.refactoring.Post;
+import io.github.eottabom.refactoring._01_smell_mysterious_name.Comment;
+import io.github.eottabom.refactoring._01_smell_mysterious_name.Post;
 
 public final class PostFactory {
 

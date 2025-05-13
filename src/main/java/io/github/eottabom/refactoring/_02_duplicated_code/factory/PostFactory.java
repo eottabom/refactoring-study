@@ -2,8 +2,8 @@ package io.github.eottabom.refactoring._02_duplicated_code.factory;
 
 import java.util.List;
 
-import io.github.eottabom.refactoring.Comment;
-import io.github.eottabom.refactoring.Post;
+import io.github.eottabom.refactoring._01_smell_mysterious_name.Comment;
+import io.github.eottabom.refactoring._01_smell_mysterious_name.Post;
 
 public final class PostFactory {
 

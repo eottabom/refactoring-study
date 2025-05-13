@@ -3,7 +3,7 @@ package io.github.eottabom.refactoring._02_duplicated_code._04_extract_function;
 import java.util.HashSet;
 import java.util.Set;
 
-import io.github.eottabom.refactoring.Post;
+import io.github.eottabom.refactoring._01_smell_mysterious_name.Post;
 import io.github.eottabom.refactoring._02_duplicated_code.factory.PostFactory;
 
 public class PostDashBoard {

@@ -6,8 +6,8 @@ import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
-import io.github.eottabom.refactoring.Comment;
-import io.github.eottabom.refactoring.Post;
+import io.github.eottabom.refactoring._01_smell_mysterious_name.Comment;
+import io.github.eottabom.refactoring._01_smell_mysterious_name.Post;
 import io.github.eottabom.refactoring._03_long_function._11_decompose_conditional.Participant;
 import io.github.eottabom.refactoring._03_long_function._11_decompose_conditional.StudyPrinter;
 import io.github.eottabom.refactoring._03_long_function.factory.PostFactory;

@@ -3,8 +3,8 @@ package io.github.eottabom.refactoring._01_smell_mysterious_name.factory;
 import java.util.HashMap;
 import java.util.Map;
 
-import io.github.eottabom.refactoring.Article;
-import io.github.eottabom.refactoring.Comment;
+import io.github.eottabom.refactoring._01_smell_mysterious_name.Article;
+import io.github.eottabom.refactoring._01_smell_mysterious_name.Comment;
 
 public final class ArticleFactory {
 
