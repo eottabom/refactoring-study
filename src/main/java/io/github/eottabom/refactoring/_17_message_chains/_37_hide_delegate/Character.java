@@ -6,8 +6,6 @@ public class Character {
 
 	private Guild guild;
 
-
-
 	public Character(String name) {
 		this.name = name;
 	}
