@@ -10,65 +10,55 @@ import static org.assertj.core.api.Assertions.assertThat;
 class RoomReservationTests {
 
 	@Test
-	void shouldReturnBaseRateOnWeekdayForStandardRoom() {
+	void baseRateOnWeekday() {
 		Room room = new Room(List.of(), 120);
 		LocalDateTime weekday = LocalDateTime.of(2022, 1, 20, 19, 0);
 
-		RoomReservation reservation = new RoomReservation(room, weekday);
-		assertThat(reservation.calculateRate()).isEqualTo(120);
-	}
+		RoomReservation standard = RoomReservation.createReservation(room, weekday);
+		assertThat(standard.calculateRate()).isEqualTo(120);
 
-	@Test
-	void shouldIncludeSuiteFeeOnWeekday() {
-		Room room = new Room(List.of(), 120);
-		LocalDateTime weekday = LocalDateTime.of(2022, 1, 20, 19, 0);
 		SuitePackage suitePackage = new SuitePackage(List.of(), 50);
-
-		SuiteReservation reservation = new SuiteReservation(room, weekday, suitePackage);
-		assertThat(reservation.calculateRate()).isEqualTo(170);
+		RoomReservation suite = RoomReservation.createSuiteReservation(room, weekday, suitePackage);
+		assertThat(suite.calculateRate()).isEqualTo(170);
 	}
 
 	@Test
-	void shouldAddWeekendSurchargeToBaseRate() {
+	void baseRateOnWeekendWithSurcharge() {
 		Room room = new Room(List.of(), 120);
 		LocalDateTime weekend = LocalDateTime.of(2022, 1, 15, 19, 0);
 
-		RoomReservation reservation = new RoomReservation(room, weekend);
-		assertThat(reservation.calculateRate()).isEqualTo(138);
-	}
+		RoomReservation standard = RoomReservation.createReservation(room, weekend);
+		assertThat(standard.calculateRate()).isEqualTo(138);
 
-	@Test
-	void shouldIncludeSuiteFeeOnWeekendWithSurcharge() {
-		Room room = new Room(List.of(), 120);
-		LocalDateTime weekend = LocalDateTime.of(2022, 1, 15, 19, 0);
 		SuitePackage suitePackage = new SuitePackage(List.of(), 50);
-
-		SuiteReservation reservation = new SuiteReservation(room, weekend, suitePackage);
-		assertThat(reservation.calculateRate()).isEqualTo(188);
+		RoomReservation suite = RoomReservation.createSuiteReservation(room, weekend, suitePackage);
+		assertThat(suite.calculateRate()).isEqualTo(188);
 	}
 
 	@Test
-	void shouldEnableLateCheckoutOnWeekdayOnly() {
-		Room roomWithLateCheckout = new Room(List.of("lateCheckout"), 120);
+	void lateCheckoutAvailability() {
+		Room room = new Room(List.of(), 120);
+		Room withLateCheckout = new Room(List.of("lateCheckout"), 120);
 		LocalDateTime weekday = LocalDateTime.of(2022, 1, 20, 19, 0);
 		LocalDateTime weekend = LocalDateTime.of(2022, 1, 15, 19, 0);
-
-		assertThat(new RoomReservation(roomWithLateCheckout, weekday).includesLateCheckout()).isTrue();
-		assertThat(new RoomReservation(roomWithLateCheckout, weekend).includesLateCheckout()).isFalse();
-	}
-
-	@Test
-	void shouldEnableLateCheckoutForSuiteEvenOnWeekend() {
-		Room roomWithLateCheckout = new Room(List.of("lateCheckout"), 120);
-		LocalDateTime weekend = LocalDateTime.of(2022, 1, 15, 19, 0);
 		SuitePackage suitePackage = new SuitePackage(List.of(), 50);
 
-		SuiteReservation reservation = new SuiteReservation(roomWithLateCheckout, weekend, suitePackage);
-		assertThat(reservation.includesLateCheckout()).isTrue();
+		// 여기서 생성자대신에 팩토리 메서드를 사용한다.
+//		assertThat(new RoomReservation(room, weekday).includesLateCheckout()).isFalse();
+//		assertThat(new RoomReservation(withLateCheckout, weekday).includesLateCheckout()).isTrue();
+//		assertThat(new RoomReservation(withLateCheckout, weekend).includesLateCheckout()).isFalse();
+
+		assertThat(RoomReservation.createReservation(room, weekday).includesLateCheckout()).isFalse();
+		assertThat(RoomReservation.createReservation(withLateCheckout, weekday).includesLateCheckout()).isTrue();
+		assertThat(RoomReservation.createReservation(withLateCheckout, weekend).includesLateCheckout()).isFalse();
+
+//		assertThat(new SuiteReservation(withLateCheckout, weekend, suitePackage).includesLateCheckout()).isTrue();
+
+		assertThat(RoomReservation.createSuiteReservation(withLateCheckout, weekend, suitePackage).includesLateCheckout()).isTrue();
 	}
 
 	@Test
-	void shouldProvideDinnerServiceOnlyOnWeekdays() {
+	void dinnerServiceAvailability() {
 		Room room = new Room(List.of(), 120);
 		SuitePackage suiteWithDinner = new SuitePackage(List.of("dinner"), 50);
 		LocalDateTime weekday = LocalDateTime.of(2022, 1, 20, 19, 0);
