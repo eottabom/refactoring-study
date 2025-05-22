@@ -50,7 +50,8 @@ public class RoomReservation {
 		// @formatter:on
 
 		// 우선은 SuiteReservation 을 그대로 사용하되, delegate 를 중간에 사용하게 한다.
-		var suiteReservation = new SuiteReservation(room, checkInDateTime, suitePackage);
+		// STEP 8) 최종적으로는 SuiteReservation 는 필요가 없어진다.
+		var suiteReservation = createReservation(room, checkInDateTime);
 		suiteReservation.suiteDelegate = new SuiteDelegate(suiteReservation, suitePackage); // 중요!
 		return suiteReservation;
 	}

@@ -2,6 +2,7 @@ package io.github.eottabom.refactoring._18_middle_man._40_replace_subclass_with_
 
 import java.time.LocalDateTime;
 
+// 최종적으로 remove
 public class SuiteReservation extends RoomReservation {
 
 	private SuitePackage suitePackage;
