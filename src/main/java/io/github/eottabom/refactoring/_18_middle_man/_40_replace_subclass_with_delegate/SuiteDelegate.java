@@ -16,4 +16,20 @@ public class SuiteDelegate {
 	public boolean includesLateCheckout() {
 		return this.roomReservation.room.hasAmenity("lateCheckout");
 	}
+
+	// @formatter:off
+	/*
+		STEP 5) add
+		여기서 계산 하는 로직은 SuiteReservation 의 calculateRate 의 로직이 된다.
+		그렇게 되면, calculateRate 은 더이상 필요가 없어진다.
+	 */
+	// @formatter:on
+	public double extendBasePrice(double rate) {
+		return Math.round(rate + this.suitePackage.getExtraCharge());
+	}
+
+	// STEP 6) move
+	public boolean includesDinnerService() {
+		return this.suitePackage.hasAmenity("dinner") && !this.roomReservation.isWeekend();
+	}
 }

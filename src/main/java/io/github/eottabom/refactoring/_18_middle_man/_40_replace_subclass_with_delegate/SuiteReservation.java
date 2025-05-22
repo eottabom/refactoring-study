@@ -24,15 +24,19 @@ public class SuiteReservation extends RoomReservation {
 ////		return this.room.hasAmenity("lateCheckout");
 //		return this.suiteDelegate.includesLateCheckout();
 //	}
+
+
+	// STEP 5) move logic and remove method
+//	@Override
+//	public double calculateRate() {
+//		return Math.round(super.calculateRate() + this.suitePackage.getExtraCharge());
+//	}
+
+	// STEP 6) 마지막은 이건데, 먼저 pull up 해준다.
+//	public boolean includesDinnerService() {
+//		return this.suitePackage.hasAmenity("dinner") && !isWeekend();
+//	}
+
 	// @formatter:on
-
-	@Override
-	public double calculateRate() {
-		return Math.round(super.calculateRate() + this.suitePackage.getExtraCharge());
-	}
-
-	public boolean includesDinnerService() {
-		return this.suitePackage.hasAmenity("dinner") && !isWeekend();
-	}
 
 }

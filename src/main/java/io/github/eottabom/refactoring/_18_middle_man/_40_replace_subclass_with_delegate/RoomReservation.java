@@ -69,13 +69,25 @@ public class RoomReservation {
 		return day == DayOfWeek.SATURDAY || day == DayOfWeek.SUNDAY;
 	}
 
+	// STEP 5) 여기도 rate 를 계산해서 return 하는게 아니라, delegate 쪽으로 위임을 시켜준다.
 	public double calculateRate() {
 		double rate = this.room.getBaseRate();
 		if (isWeekend()) {
 			rate += Math.round(rate * 0.15);
 		}
-		return rate;
-		return (this.suiteDelegate != null) ? this.suiteDelegate.extendBasePrice(rate);
+		// @formatter:off
+//		return rate;
+		// @formatter:on
+		return (this.suiteDelegate != null) ? this.suiteDelegate.extendBasePrice(rate) : rate;
+	}
+
+	// STEP 6) pull 하면 여기에 생기는데, 이 로직은 suite delegate 쪽으로 가져가야한다.
+	public boolean includesDinnerService() {
+		// @formatter:off
+//		return this.suitePackage.hasAmenity("dinner") && !isWeekend();
+		// @formatter:off
+		// STEP 7) 이렇게 로직을 변경해주면 된다.
+		return (this.suiteDelegate != null) ? this.suiteDelegate.includesDinnerService() : false;
 	}
 
 }
