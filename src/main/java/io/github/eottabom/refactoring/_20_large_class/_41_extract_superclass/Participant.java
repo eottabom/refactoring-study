@@ -1,7 +1,7 @@
 package io.github.eottabom.refactoring._20_large_class._41_extract_superclass;
 
 // STEP 1) add Participant
-public class Participant {
+public abstract class Participant {
 
 	protected String name;
 
@@ -18,7 +18,10 @@ public class Participant {
 	}
 
 	// STEP 3) pull up
-//	public double totalAnnualFee() {
-//		return this.totalMonthlyFee() * 12;
-//	}
+	public double annualFee() {
+		return this.getMonthlyFee() * 12;
+	}
+
+	// STEP 4) add abstract method
+	abstract protected double getMonthlyFee();
 }

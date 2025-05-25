@@ -17,9 +17,10 @@ public class Student extends Participant {
 	}
 
 	// STEP 3) pull up
-	public double annualFee() {
-		return this.monthlyFee * 12;
-	}
+	// STEP 5) 이제는 이 코드는 없어도 된다.
+//	public double annualFee() {
+//		return this.monthlyFee * 12;
+//	}
 
 	public Integer getId() {
 		return this.id;
@@ -30,6 +31,8 @@ public class Student extends Participant {
 //	}
 	// @formatter: on
 
+	// STEP 4) override
+	@Override
 	public double getMonthlyFee() {
 		return this.monthlyFee;
 	}

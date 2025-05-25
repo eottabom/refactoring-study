@@ -25,7 +25,9 @@ public class StudentGroup extends Participant {
 		return this.members;
 	}
 
-	public double totalMonthlyFee() {
+	// STEP4) add override
+	@Override
+	public double getMonthlyFee() {
 		return this.members.stream().mapToDouble(Student::getMonthlyFee).sum();
 	}
 
