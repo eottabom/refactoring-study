@@ -1,23 +1,19 @@
 /**
- * 카탈로그 3. 기능 옮기기.
- * 함수나 필드 또는 문장을 적절한 위치로 옮기는 기술.
+ * 카탈로그 2. 캡슐화.
+ * 모듈에서 외부 시스템으로 공개하지 않아도 되는 데이터를 숨기는 기술.
  *
- * Move Function (함수 옮기기)
- * Move Field (필드 옮기기)
- * Move Statements into Function (문장을 함수로 옮기기) <-> Move Statements to Callers (문장을 호출한 곳으로 옮기기)
- * - statements 를 함수 안으로 옮기는 것
- * - 항상 호출되는 statements 는 함수 안으로 옮기는 것이 더 적절하다는 것이다.
- * Move Statements to Callers (문장을 호출한 곳으로 옮기기) <-> Move Statements into Function (문장을 함수로 옮기기)
- * - 문장을 함수를 호출하는 곳으로 옮기는 것
- * - 함수 추출하기를 다시 하고 싶은 경우에 사용
- * - 하나의 Statement 에 대해서 적절한 위치를 찾아주는 리팩토링 기술
- * Replace Inline Code with Function Call (인라인 코드를 함수 호출로 바꾸기)
- * - Inline 된 코드가 여러번 사용되면 함수로 변경하는 것
- * Slide Statements (문장 슬라이드 하기)
- * - 코드를 정리하다보면 위아래로 내리기만해도 그 부분을 줄일 수 있다.
- * Split Loop (반복문 쪼개기)
- * - 반복문 안에서 여러가지 일을 하니깐 하나의 Function 으로 추출하는 것이고, 필드가 옮겨질수도 있다.
- * Replace Loop with Pipeline (반복문을 파이프라인으로 바꾸기)
- * Remove Dead Code (죽은 코드 제거하기)
+ * Encapsulate Record (레코드 캡슐화하기)
+ * Encapsulate Collection (컬렉션 캡슐화하기)
+ * - 어떠한 클래스가 가지고 있는 컬렉션을 캡슐화하는 방법이다.
+ * - 컬렉션 자체를 캡슐화하는 것.
+ * - 컬렉션의 복사본을 전달하거나 컬렉션 자체를 제공하는게 아니라, 컬렉션을 수정할 수 있는 메서드를 제공한다거나..
+ * Replace Primitive with Object (기본형을 객체로 바꾸기)
+ * Replace Temp with Object (임시 변수를 질의 함수로 바꾸기)
+ * Extract Class (클래스 추출하기)
+ * Inline Class (클래스 인라인하기)
+ * Hide Delegate (위임 숨기기) <-> Remove Middle Man (중재자 제거하기)
+ * Remove Middle Man (중재자 제거하기) <-> Hide Delegate (위임 숨기기)
+ * Substitute Algorithm (알고리듬 교체하기)
+ * - 캡슐화가 잘되어 있을때 사용할 수 있는 리팩토링 기술이라고 할 수 있음.
  */
 package io.github.eottabom.refactoring._00_catalog.catalog_02;
