@@ -20,4 +20,4 @@
  * Replace Loop with Pipeline (반복문을 파이프라인으로 바꾸기)
  * Remove Dead Code (죽은 코드 제거하기)
  */
-package io.github.eottabom.refactoring._00.catalog_02;
+package io.github.eottabom.refactoring._00_catalog.catalog_02;

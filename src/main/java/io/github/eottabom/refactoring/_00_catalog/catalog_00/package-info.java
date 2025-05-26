@@ -18,4 +18,4 @@
  * 10) Combine Function into TransForm (여러 함수를 변환 함수로 묶기)
  * 11) Split Phase (단계 쪼개기)
  */
-package io.github.eottabom.refactoring._00.catalog_00;
+package io.github.eottabom.refactoring._00_catalog.catalog_00;

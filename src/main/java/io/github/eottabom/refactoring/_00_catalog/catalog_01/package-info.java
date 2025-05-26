@@ -16,4 +16,4 @@
  * Substitute Algorithm (알고리듬 교체하기)
  * - 캡슐화가 잘되어 있을때 사용할 수 있는 리팩토링 기술이라고 할 수 있음.
  */
-package io.github.eottabom.refactoring._00.catalog_01;
+package io.github.eottabom.refactoring._00_catalog.catalog_01;
